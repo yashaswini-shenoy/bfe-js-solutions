@@ -40,16 +40,15 @@
 // This is a JavaScript coding problem from BFE.dev
 
 /**
- * @param {(...args: any[]) => any} func
+ * @param {Function} func
  * @param {number} wait
- * @returns {(...args: any[]) => any}
  */
 function debounce(func, wait) {
   let timer = null;
-  return function (input) {
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      func(input);
+  return function (...args) {
+    window.clearTimeout(timer);
+    timer = window.setTimeout(() => {
+      func.call(this, ...args);
     }, wait);
   };
 }
