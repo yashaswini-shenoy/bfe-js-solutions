@@ -22,7 +22,7 @@
  * @param {string[][]} message
  * @return {string}
  */
-function decode(message) {
+function decode(message: string[][]): string {
   let i = 0,
     j = 0,
     col = message[0]?.length,

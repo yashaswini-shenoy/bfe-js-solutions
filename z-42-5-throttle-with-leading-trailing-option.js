@@ -55,11 +55,11 @@
  */
 function throttle(func, wait, option = { leading: true, trailing: true }) {
   // 1. cooling or not
-  // 2. call posponed.
+  // 2. call postponed.
 
   //     1. once called,
   //       - if cooling, stash the call
-  //       - if not colling, run it  and set the timer
+  //       - if not cooling, run it  and set the timer
   //     2. when time is up, reset cooling
   //       - if stashed call, call it, go to 1
   let timer = null;
