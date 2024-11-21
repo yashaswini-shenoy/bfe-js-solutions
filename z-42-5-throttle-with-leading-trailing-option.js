@@ -47,6 +47,7 @@
 // expect(run(['A@0', 'B@2', 'C@3'])).toEqual(['A@0', 'C@3'])
 
 // SOLUTION
+
 /**
  * @param {Function} func
  * @param {number} wait
