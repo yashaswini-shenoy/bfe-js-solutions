@@ -53,6 +53,7 @@ Function.prototype.myapply = function (context, args) {
 
   context = Object(context || window); // set context to windows if null and Create an object to handle primitive values
   // 'this' points to the calling function here
+
   context[symbol] = this; // assign the function to a unique method created on the context
   const result = context[symbol](...args); // call the function
   delete context[symbol]; // delete the unique key
