@@ -57,7 +57,7 @@ Function.prototype.myapply = function (context, args) {
   context[symbol] = this; // assign the function to a unique method created on the context
   const result = context[symbol](...args); // call the function
   delete context[symbol]; // delete the unique key
-  return result; // return result
+  return result; // return result.
 };
 // Testing
 let obj = {
