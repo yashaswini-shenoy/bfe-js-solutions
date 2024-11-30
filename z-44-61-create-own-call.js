@@ -60,6 +60,7 @@ Function.prototype.myapply = function (context, args) {
   return result; // return result.
 };
 // Testing
+
 let obj = {
   a: 10,
   b: 20,
