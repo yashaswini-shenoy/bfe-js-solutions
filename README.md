@@ -94,3 +94,79 @@ else dp[i][j] = max(dp[i + 1][j], dp[i][j + 1]);
 int res = dp[0][0];
 cout << res << endl;
 }
+
+<!--  -->
+
+let mp = [];
+
+function newClearTimeout(id)
+{
+mp = mp.filter((ele) => ele.id !== id);
+}
+
+class FakeTimer {
+currId = 1;
+currTime = 0;
+
+newSetTimeout(fn, timer, args)
+{
+let id = this.currId++;
+mp.push({
+id,
+fn,
+time: this.currTime + timer,
+args
+})
+mp.sort((a, b) => a.time < b.time);
+return id;
+}
+
+some = ()=>
+{
+console.log(this.currTime);
+return this.currTime;
+}
+
+install() {
+console.log(this.currTime)
+this.original = {
+setTimeout: window.setTimeout,
+clearTimeout: window.clearTimeout,
+now: Date.now
+}
+window.setTimeout = this.newSetTimeout.bind(this);
+window.clearTimeout = newClearTimeout;
+Date.now = this.some;
+}
+
+uninstall() {
+window.setTimeout = this.original.setTimeout;
+window.clearTimeout = this.original.clearTimeout;
+Date.now = this.original.now;
+}
+
+tick() {
+for(let m of mp)
+{
+m.fn.call(this, m.args);
+this.currTime = m.time;
+}
+}
+}
+
+// const fakeTimer = new FakeTimer()
+// fakeTimer.install()
+// // const logs = []
+// // const log = (arg) => {
+// // logs.push([Date.now(), arg])
+// // }
+// setTimeout(() => {})
+// // log 'A' at 100
+// const b = setTimeout(() => { 110})
+// clearTimeout(b)
+// // b is set but cleared
+// setTimeout(() => { 200})
+// fakeTimer.tick()
+// Date.now();
+// fakeTimer.uninstall()
+// // expect(logs).toEqual([[100, 'A'], [200, 'C']])
