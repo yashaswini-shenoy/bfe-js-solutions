@@ -27,7 +27,6 @@
 // console.log(obj.a.c.d['01']) // "BFE"
 
 // SOLUTION
-
 function set(obj, path, value) {
   path = Array.isArray(path)
     ? path
